@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" id="html-tag">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于对张刘晓杨的处罚与通报</title>
+    <title>关于对张刘晓杨的处罚与通报 / Announcement & Notice</title>
     <style>
         body {
             background-color: #0a0a0a;
             color: #eaeaea;
-            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 80px 20px 20px 20px; /* 留出顶部导航栏的空间 */
         }
+        /* 导航栏样式 */
+        .nav-lang-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #141414;
+            border-bottom: 2px solid #ff0000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+        }
+        .lang-btn {
+            background-color: #000;
+            color: #eaeaea;
+            border: 1px solid #ff4444;
+            padding: 6px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        .lang-btn:hover {
+            background-color: #ff0000;
+            color: #fff;
+            box-shadow: 0 0 8px #ff0000;
+        }
+        .lang-btn.active {
+            background-color: #8b0000;
+            color: #fff;
+            border-color: #ff0000;
+        }
+        /* 原有样式保持并优化 */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -48,8 +84,9 @@
             margin-bottom: 30px;
             position: relative;
         }
+        /* 动态伪元素：通过 data-label 属性由 JS 控制多语言 */
         .official-notice::before {
-            content: "官方通报";
+            content: attr(data-label);
             position: absolute;
             top: -12px;
             left: 20px;
@@ -130,111 +167,308 @@
 </head>
 <body>
 
+<div class="nav-lang-bar">
+    <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
+    <button class="lang-btn" onclick="switchLang('en')">English</button>
+    <button class="lang-btn" onclick="switchLang('la')">Latina</button>
+    <button class="lang-btn" onclick="switchLang('ja')">日本語</button>
+    <button class="lang-btn" onclick="switchLang('de')">Deutsch</button>
+</div>
+
 <div class="container">
     <div class="header">
-        <h1>恶劣行为通报及事件公示</h1>
-        <p>当事人：张刘晓杨（鼠壬/Varcolac/凯文/M4TECH_offical/雷明登ACR_Official/AK117_Official/Anonymous Chihaya/小心你*/崩坏の少年）</p>
+        <h1 id="main-title"></h1>
+        <p id="party-info"></p>
     </div>
 
     <div class="content-section">
-        <div class="official-notice">
-            <h2>关于对鼠壬的处罚决定的通报</h2>
-            <p>永安联盟、三中军友社、一中军友社、水院尼龙社各成员：</p>
-            <p>因我社社员鼠壬在社内期间，多次违反社内相关规定，<span class="highlight">将社员个人资料及信息对外进行泄露</span>，经社团干事批评教育后仍不悔改，后经社团总支讨论决定，给予七天暂踢处分。</p>
-            <p>鼠王在处分期间，仍未意识到错误，甚至<span class="highlight">半夜骚扰永安联盟成员</span>，并且因为对其收费不满而将其挂于自己群内，严重破坏了我社形象，造成了极大不良影响。</p>
-            <p>现经社团团委开会决定，<span class="highlight">对鼠王给予开除社团的处分决定，并永不招入</span>。</p>
-            <div class="footer">
-                水利电力学院尼龙社<br>
-                2023年12月28日
-            </div>
+        <div class="official-notice" id="notice-box" data-label="官方通报">
+            <h2 id="notice-title"></h2>
+            <p id="notice-to"></p>
+            <p id="notice-p1"></p>
+            <p id="notice-p2"></p>
+            <p id="notice-p3"></p>
+            <div class="footer" id="notice-footer"></div>
         </div>
 
-        <h2>英雄事迹</h2>
-        <ul class="timeline">
-             <li>
-                <span class="date">2018年07月22日</span>
-                <p>其B站大号——张刘晓杨将自己的亲生浮木挂在动态上。</p>
-                 <div class="image-section">
-                       <img src="img_5.jpg" alt="youhavenotdnm" class="evidence-img">
-                       <p style="font-size: 12px; color: #888; margin-top: 10px;">直到现在你仍然有愧对于你父母亲，一点担当都没有！</p>
-                  </div>
-            </li>
-            <li>
-                <span class="date">2021年04月22日</span>
-                <p>其在Steam端扭矩漂移（Torque Drift）中，因<span class="highlight">改设备的系统时间刷每日奖励、加速冷却时间</span>被封禁后，恼羞成怒，对其游戏评论区把自己的封禁代码发出来刷差评。</p>
-                 <div class="image-section">
-                       <img src="img_4.png" alt="bruh" class="evidence-img">
-                       <p style="font-size: 12px; color: #888; margin-top: 10px;">玩这种游戏也开吗？</p>
-                  </div>
-            </li>
-            <li>
-                <span class="date">2022年01月08日</span>
-                <p>其在皇牌空战7公开联机房中<span class="highlight">开锁血挂</span>。被挂在贴吧，虽没视频证据，但ID昵称为崩坏的少年，完全可以确定是张刘晓杨所为。</p>
-            </li>
-            <li>
-                <span class="date">2022年05月29日</span>
-                <p>其在皇牌空战7公开联机房中<span class="highlight">开即死、全速PSM作弊外挂</span>。被一名外国人记录保存下来，张刘晓杨开挂被锤的记录录像：https://www.youtube.com/watch?v=2Msaf3Jvnps</p>
-            </li>
-            <li>
-                <span class="date">2023年11月20日</span>
-                <p>其在自己创建的群聊内未经允许，<span class="highlight">无差别转发内部群消息（共131条）</span>。两名群成员对其进行第1次警告，其表示会改正，不再做出类似行为。</p>
-            </li>
-            <li>
-                <span class="date">2023年12月22日</span>
-                <p>其再次于个人群聊中<span class="highlight">无差别截屏内部群聊天记录</span>，泄露了包括专业、班级、姓名等实名个人信息，性质更为严重。当晚受到不满指责后，再次口头表示会改正。内部决定对其处以7天踢出群聊的处罚以观后效。</p>
-            </li>
-            <li>
-                <span class="date">2023年12月23日</span>
-                <p>因发射器维修事宜，其在未获得技师（永安wargame联盟队长）同意的情况下，于<span class="highlight">当晚9:30多直接跑到技师家门口进行骚扰</span>。当时技师父亲患有心肌梗塞需要静养，技师本人也有睡眠障碍正在吃中药，此举严重打扰了技师及其家人的生活。</p>
-            </li>
-            <li>
-                <span class="date">2023年12月26日</span>
-                <p>发现其在个人群内<span class="highlight">挂人</span>，对技师的修改建议和收费价格表示不满，并在微信截图里<span class="highlight">泄露了技师的真实姓名</span>。当晚8点多将其叫出线下对峙，当众宣读处罚结果，<span class="highlight">其被永安wargame联盟所有社团拉黑</span>。事后给予其最后一次机会，要求写300字诚恳检讨书。</p>
-            </li>
-            <li>
-                <span class="date">2023年12月29日</span>
-                <p>截至29号晚上12点，其<span class="highlight">未通过任何渠道提交检讨书</span>，错失最后改正机会。现已决定公开此事，向其居住地wargame玩家通报，提醒大家注意此人。</p>
-            </li>
-            <li>
-                <span class="date">2025年06月06日</span>
-                <p>其 B 站账号 M4TECH_official，在首都高赛车宣传片评论区发表“快进到红色恶魔追求北极星”。<span class="highlight">被实锤为云玩家乱磕 CP</span>，出事后装遗老到处挂首都高赛车圈的玩家，因此其也在首都高赛车圈里也打响了臭名昭著的名号。</p>
-                 <div class="image-section">
-                       <img src="img_3.jpg" alt="八竿子打不着的角色怎么给你磕到一起去了？" class="evidence-img">
-                       <p style="font-size: 12px; color: #888; margin-top: 10px;">关系八竿子打不着的角色怎么给你磕到一起去了？</p>
-                  </div>
-            </li>
-            <li>
-                <span class="date">2025年07月27日</span>
-                <p>其因被一位漫展coser单方面删好友，不满被单删，恼羞成怒地<span class="highlight">在这位coser的亲友群里质问coser为何删他</span>，这位coser好声好气为其解释了原因，由于当时张刘晓杨当时的语气实在是太冲了，再加上对其该coser死缠烂打，由于行为十分恶劣，故警醒各位注意避雷。</p>
-                 <h2>该COSER发布的警告贴</h2> 
-                 <div class="image-section">
-                       <img src="img_2.jpg" alt="coser的警告贴" class="evidence-img">
-                       <p style="font-size: 12px; color: #888; margin-top: 10px;">看来是线下线上都惹了个遍啊</p>
-                  </div>
-            </li>
-            <li>
-                <span class="date">2026年05月21日</span>
-                <p>发现其个人空间发挂人贴的时候，其<span class="highlight">泄露了其同校同学的真实姓名</span>，如上所述张刘晓杨已经不止一回有泄露他人隐私信息的情况。</p>
-            </li>
-        </ul>
+        <h2 id="section-hero"></h2>
+        <ul class="timeline" id="timeline-list">
+            </ul>
 
-        <h2>我是谁我在哪？</h2>
+        <h2 id="section-whereami"></h2>
         <div class="image-section">
-            <img src="img_1.jpg" alt="嘲讽图片/证据图片" class="evidence-img">
-            <p style="font-size: 12px; color: #888; margin-top: 10px;">不用担心，我们帮你回忆了。</p>
+            <img src="img_1.jpg" alt="Evidence" class="evidence-img">
+            <p style="font-size: 12px; color: #888; margin-top: 10px;" id="img1-desc"></p>
         </div>
 
-        <h2>线下对峙录音存档</h2>
+        <h2 id="section-audio"></h2>
         <div class="audio-section">
-            <p style="color: #ff3333; font-weight: bold;">【证据保留：2023年12月26日线下对峙现场录音】</p>
+            <p style="color: #ff3333; font-weight: bold;" id="audio-title"></p>
             <audio controls>
                 <source src="radio_1.mp3" type="audio/mpeg">
-                您的浏览器不支持播放该音频。
+                您的浏览器不支持播放该音频。/ Your browser does not support the audio element.
             </audio>
-                 <p style="color: #ff3333; font-weight: bold;">若无法播放请进入我的网盘下载录音文件：https://pan.quark.cn/s/3220c0802a87</p>
+            <p style="color: #ff3333; font-weight: bold; margin-top:15px;" id="audio-link"></p>
         </div>
     </div>
 </div>
+
+<script>
+// 多语言文本数据库
+const i18n = {
+    zh: {
+        langTag: "zh-CN",
+        label: "官方通报",
+        mainTitle: "恶劣行为通报及事件公示",
+        partyInfo: "当事人：张刘晓杨（鼠壬/Varcolac/凯文/M4TECH_offical/雷明登ACR_Official/AK117_Official/Anonymous Chihaya/小心你*/崩坏の少年）",
+        noticeTitle: "关于对鼠壬的处罚决定的通报",
+        noticeTo: "永安联盟、三中军友社、一中军友社、水院尼龙社各成员：",
+        noticeP1: "因我社社员鼠壬在社内期间，多次违反社内相关规定，<span class='highlight'>将社员个人资料及信息对外进行泄露</span>，经社团干事批评教育后仍不悔改，后经社团总支讨论决定，给予七天暂踢处分。",
+        noticeP2: "鼠王在处分期间，仍未意识到错误，甚至<span class='highlight'>半夜骚扰永安联盟成员</span>，并且因为对其收费不满而将其挂于自己群内，严重破坏了我社形象，造成了极大不良影响。",
+        noticeP3: "现经社团团委开会决定，<span class='highlight'>对鼠王给予开除社团的处分决定，并永不招入</span>。",
+        noticeFooter: "水利电力学院尼龙社<br>2023年12月28日",
+        sectionHero: "英雄事迹",
+        sectionWhereAmI: "我是谁我在哪？",
+        img1Desc: "不用担心，我们帮你回忆了。",
+        sectionAudio: "线下对峙录音存档",
+        audioTitle: "【证据保留：2023年12月26日线下对峙现场录音】",
+        audioLink: "若无法播放请进入我的网盘下载录音文件：https://pan.quark.cn/s/3220c0802a87",
+        timeline: [
+            { date: "2018年07月22日", text: "其B站大号——张刘晓杨将自己的亲生浮木挂在动态上。", img: "img_5.jpg", imgDesc: "直到现在你仍然有愧对于你父母亲，一点担当都没有！" },
+            { date: "2021年04月22日", text: "其在Steam端扭矩漂移（Torque Drift）中，因<span class='highlight'>改设备的系统时间刷每日奖励、加速冷却时间</span>被封禁后，恼羞成怒，对其游戏评论区把自己的封禁代码发出来刷差评。", img: "img_4.png", imgDesc: "玩这种游戏也开吗？" },
+            { date: "2022年01月08日", text: "其在皇牌空战7公开联机房中<span class='highlight'>开锁血挂</span>。被挂在贴吧，虽没视频证据，但ID昵称为崩坏的少年，完全可以确定是张刘晓杨所为。" },
+            { date: "2022年05月29日", text: "其在皇牌空战7公开联机房中<span class='highlight'>开即死、全速PSM作弊外挂</span>。被一名外国人记录保存下来，张刘晓杨开挂被锤的记录录像：https://www.youtube.com/watch?v=2Msaf3Jvnps" },
+            { date: "2023年11月20日", text: "其在自己创建的群聊内未经允许，<span class='highlight'>无差别转发内部群消息（共131条）</span>。两名群成员对其进行第1次警告，其表示会改正，不再做出类似行为。" },
+            { date: "2023年12月22日", text: "其再次于个人群聊中<span class='highlight'>无差别截屏内部群聊天记录</span>，泄露了包括专业、班级、姓名等实名个人信息，性质更为严重。当晚受到不满指责后，再次口头表示会改正。内部决定对其处以7天踢出群聊的处罚以观后效。" },
+            { date: "2023年12月23日", text: "因发射器维修事宜，其在未获得技师（永安wargame联盟队长）同意的情况下，于<span class='highlight'>当晚9:30多直接跑到技师家门口进行骚扰</span>。当时技师父亲患有心肌梗塞需要静养，技师本人也有睡眠障碍正在吃中药，此举严重打扰了技师及其家人的生活。" },
+            { date: "2023年12月26日", text: "发现其在个人群内<span class='highlight'>挂人</span>，对技师的修改建议和收费价格表示不满，并在微信截图里<span class='highlight'>泄露了技师的真实姓名</span>。当晚8点多将其叫出线下对峙，当众宣读处罚结果，<span class='highlight'>其被永安wargame联盟所有社团拉黑</span>。事后给予其最后一次机会，要求写300字诚恳检讨书。" },
+            { date: "2023年12月29日", text: "截至29号晚上12点，其<span class='highlight'>未通过任何渠道提交检讨书</span>，错失最后改正机会。现已决定公开此事，向其居住地wargame玩家通报，提醒大家注意此人。" },
+            { date: "2025年06月06日", text: "其 B 站账号 M4TECH_official，在首都高赛车宣传片评论区发表“快进到红色恶魔追求北极星”。<span class='highlight'>被实锤为云玩家乱磕 CP</span>，出事后装遗老到处挂首都高赛车圈的玩家，因此其也在首都高赛车圈里也打响了臭名昭著的名号。", img: "img_3.jpg", imgDesc: "关系八竿子打不着的角色怎么给你磕到一起去了？" },
+            { date: "2025年07月27日", text: "其因被一位漫展coser单方面删好友，不满被单删，恼羞成怒地<span class='highlight'>在这位coser的亲友群里质问coser为何删他</span>，这位coser好声好气为其解释了原因，由于当时张刘晓杨当时的语气实在是太冲了，再加上对其该coser死缠烂打，由于行为十分恶劣，故警醒各位注意避雷。", subTitle: "该COSER发布的警告贴", img: "img_2.jpg", imgDesc: "看来是线下线上都惹了个遍啊" },
+            { date: "2026年05月21日", text: "发现其个人空间发挂人贴的时候，其<span class='highlight'>泄露了其同校同学的真实姓名</span>，如上所述张刘晓杨已经不止一回有泄露他人隐私信息的情况。" }
+        ]
+    },
+    en: {
+        langTag: "en",
+        label: "Official Notice",
+        mainTitle: "Announcement of Malicious Behavior and Public Disclosure",
+        partyInfo: "Person Concerned: Zhang Liu Xiao Yang (Aliases: 鼠壬 / Varcolac / 凯文 / M4TECH_offical / 雷明顿ACR_Official / AK117_Official / Anonymous Chihaya / 小心你* / 崩坏の少年)",
+        noticeTitle: "Announcement on the Disciplinary Action against Shuren",
+        noticeTo: "To all members of Yongan Alliance, No.3 High School Military Hobbyists Club, No.1 High School Military Hobbyists Club, and Water Conservatory Institute Nylon Club:",
+        noticeP1: "During his stay in our club, our member Shuren repeatedly violated relevant club regulations by <span class='highlight'>leaking members' personal data and information to the public</span>. He showed no remorse after being criticized and educated by club officers. Following a discussion by the general branch of the club, he was given a 7-day temporary suspension.",
+        noticeP2: "During the suspension period, Shuren still failed to realize his mistakes. He went as far as <span class='highlight'>harassing members of the Yongan Alliance in the middle of the night</span>, and publicly exposed/shamed them in his own group chat due to his dissatisfaction with their repair fees, severely damaging our club's reputation and causing an extremely negative impact.",
+        noticeP3: "It has now been decided by the club's Youth League Committee meeting that <span class='highlight'>Shuren is permanently expelled from the club and will never be readmitted</span>.",
+        noticeFooter: "Nylon Club of Water Conservatory and Electric Power Institute<br>December 28, 2023",
+        sectionHero: "Deeds of 'Heroism'",
+        sectionWhereAmI: "Who Am I and Where Am I?",
+        img1Desc: "Don't worry, we helped refresh your memory.",
+        sectionAudio: "Offline Confrontation Recording Archive",
+        audioTitle: "[Evidence Retention: Audio Recording of the Offline Confrontation on December 26, 2023]",
+        audioLink: "If it cannot be played, please download the recording via Quark Drive: https://pan.quark.cn/s/3220c0802a87",
+        timeline: [
+            { date: "July 22, 2018", text: "His main Bilibili account—Zhang Liu Xiao Yang—publicly posted/shamed his biological parents on his dynamic feed.", img: "img_5.jpg", imgDesc: "To this day, you should still feel ashamed before your parents; you have absolutely no sense of accountability!" },
+            { date: "April 22, 2021", text: "In the Steam game 'Torque Drift', after being banned for <span class='highlight'>modifying system time to exploit daily rewards and speed up cooldowns</span>, he flew into a rage and spammed negative reviews in the game comment section, posting his own ban code.", img: "img_4.png", imgDesc: "Cheating even in this kind of game?" },
+            { date: "January 08, 2022", text: "He used a <span class='highlight'>God mode (HP lock) cheat</span> in an Ace Combat 7 public multiplayer room. Although there was no video evidence when exposed on Baidu Tieba, the user ID 'Honkai Boy' conclusively proves it was Zhang Liu Xiao Yang's doing." },
+            { date: "May 29, 2022", text: "He used <span class='highlight'>instakill and full-speed PSM cheats</span> in an Ace Combat 7 public multiplayer room. This was recorded and archived by a foreigner. Video evidence of him being caught cheating: https://www.youtube.com/watch?v=2Msaf3Jvnps" },
+            { date: "November 20, 2023", text: "In a group chat he created, he <span class='highlight'>indiscriminately forwarded internal group messages (131 messages in total)</span> without authorization. Two group members issued a first warning to him, and he stated he would correct his behavior and stop doing it." },
+            { date: "December 22, 2023", text: "He once again <span class='highlight'>indiscriminately screenshotted internal group chats</span> in his personal group, leaking real-name personal information including majors, classes, and names, making the nature of the act even more severe. After facing criticism that night, he verbally promised to change. An internal decision was made to kick him for 7 days to observe his future behavior." },
+            { date: "December 23, 2023", text: "Regarding a launcher repair issue, without obtaining the consent of the technician (the leader of Yongan Wargame Alliance), he <span class='highlight'>went directly to the technician's doorstep at around 9:30 PM to harass him</span>. At that time, the technician's father needed rest due to a myocardial infarction, and the technician themselves suffered from sleep disorders and was taking traditional medicine. This act severely disrupted their lives." },
+            { date: "December 26, 2023", text: "It was discovered that he was <span class='highlight'>doxxing/shaming people</span> in his personal group, expressing dissatisfaction with the technician's advice and repair fees, and <span class='highlight'>leaking the technician's real name</span> in WeChat screenshots. At around 8:00 PM, he was called out for an offline confrontation, and the disciplinary action was read publicly. <span class='highlight'>He was blacklisted by all clubs under the Yongan Wargame Alliance</span>. Afterward, he was given one last chance to write a sincere 300-word apology letter." },
+            { date: "December 29, 2023", text: "As of midnight on the 29th, he <span class='highlight'>failed to submit the apology letter through any channel</span>, missing his last chance of redemption. It has been decided to make this matter public to inform local wargame players and alert everyone about him." },
+            { date: "June 06, 2025", text: "His Bilibili account, M4TECH_official, commented 'Fast forward to the Red Devil pursuing Polaris' in the Tokyo Xtreme Racer promotional video section. <span class='highlight'>Exposed as a fake/clueless player forcing a fictional ship (CP)</span>. After the incident, he posed as a veteran fan to insult local community players, earning himself an infamous reputation in the Tokyo Xtreme Racer community.", img: "img_3.jpg", imgDesc: "How on earth did you ship two characters who have absolutely nothing to do with each other?" },
+            { date: "July 27, 2025", text: "Upset after being unfriended by a convention cosplayer, he threw a tantrum and <span class='highlight'>invaded the cosplayer's friends group chat to aggressively demand an explanation</span>. Although the cosplayer explained the reason politely, his tone was overly aggressive and he continued to relentlessly stalk them. Due to this malicious behavior, this warning is issued to alert everyone.", subTitle: "Warning Post Published by the Cosplayer", img: "img_2.jpg", imgDesc: "Looks like he managed to provoke people both offline and online." },
+            { date: "May 21, 2026", text: "It was discovered that while posting a call-out thread in his personal space, he <span class='highlight'>leaked the real name of a fellow schoolmate</span>. As mentioned above, this is far from the first time Zhang Liu Xiao Yang has leaked others' private privacy information." }
+        ]
+    },
+    la: {
+        langTag: "la",
+        label: "Edictum Publicum",
+        mainTitle: "Denuntiatio Malorum Actuum et Publicatio Facti",
+        partyInfo: "Reus: Zhang Liu Xiao Yang (Cognomina: 鼠壬 / Varcolac / 凯文 / M4TECH_offical / 雷明顿ACR_Official / AK117_Official / Anonymous Chihaya / 小心你* / 崩坏の少年)",
+        noticeTitle: "Edictum de Poena in Shuren Constituta",
+        noticeTo: "Ad omnes sodales Societatis Yongan, Societatis Militaris Scholae Tertiae, Societatis Militaris Scholae Primae, et Societatis Nylon Instituti Aquarum:",
+        noticeP1: "Quoniam sodalis noster Shuren, dum in societate erat, leges domesticas saepe violavit et <span class='highlight'>nuntios privatos dataque sodalium foras effudit</span>, neque se emendavit postquam a praefectis admonitus est, consilium generale decrevit ut is per septem dies ad tempus expelleretur.",
+        noticeP2: "Ille autem intra dies poenae vitia sua non agnovit, quin etiam <span class='highlight'>media nocte sodales Societatis Yongan vexavit</span>. Propter pretiis refectionis displicentiam, eos in grege suo publico vituperavit, quod famam nostram graviter laesit et malum exemplum dedit.",
+        noticeP3: "Nunc autem comitia moderatorum decreverunt <span class='highlight'>ut Shuren ex societate penitus expellatur, neque umquam denuo recipiatur</span>.",
+        noticeFooter: "Societas Nylon Instituti Hydroelectrici<br>Die XXVIII Decembris, MMXXIII",
+        sectionHero: "Gesta 'Heroica'",
+        sectionWhereAmI: "Quis Sum et Ubi Sum?",
+        img1Desc: "Ne timeas, memoriam tuam reficere adiuvimus.",
+        sectionAudio: "Tabularium Vocis ex Certamine Praesenti",
+        audioTitle: "【Conservatio Argumenti: Vox transcripta ex certamine praesenti die XXVI Decembris MMXXIII】",
+        audioLink: "Si canere non potest, hinc documentum extrahe: https://pan.quark.cn/s/3220c0802a87",
+        timeline: [
+            { date: "Die XXII Iulii, MMXVIII", text: "In pagina sua Bilibili, Zhang Liu Xiao Yang parentes suos naturales palam vituperavit et exposuit.", img: "img_5.jpg", imgDesc: "Usque ad hoc tempus pudorem ante parentes habere debes; nullam omnino officii conscientiam habes!" },
+            { date: "Die XXII Aprilis, MMXXI", text: "In ludo Steam 'Torque Drift', quoniam <span class='highlight'>horam systematis mutavit ut praemia quotidiana caperet et tempus refrigerationis urgeret</span>, damnatus est; postea iratus sententias malas in commentariis scripsit et codicem damnationis suae ostendit.", img: "img_4.png", imgDesc: "Etiamne in tali ludo dolo uteris?" },
+            { date: "Die VIII Ianuarii, MMXXII", text: "In cubiculo publico multi-ludentium ludi 'Ace Combat 7' <span class='highlight'>dolo sanguinis clausi (invulnerabilitatis) usus est</span>. Quamquam in foro Tieba sine documento video expositus est, nomen 'Puer Honkai' satis probat hoc a Zhang Liu Xiao Yang factum esse." },
+            { date: "Die XXIX Maii, MMXXII", text: "In eodem ludo publico <span class='highlight'>dolo statim necandi et celeritatis maximae PSM usus est</span>. Peregrinus quidam hoc conscripsit et servavit. Ecce video argumentum doli eius: https://www.youtube.com/watch?v=2Msaf3Jvnps" },
+            { date: "Die XX Novembris, MMXXIII", text: "In grege quem ipse instituit, sine permissu <span class='highlight'>nuntios domestici gregis promisce foras misit (CXXXI nuntios omnino)</span>. Duo sodales eum primum monuerunt, et ille dixit se mutaturum esse." },
+            { date: "Die XXII Decembris, MMXXIII", text: "Iterum in grege suo <span class='highlight'>imagines sermonis domestici promisce cepit et foras misit</span>, quo nomina veros, classes, et studia sodalium prodidit. Monitus illa nocte, verbo se emendaturum promisit. Constitutum est ut per VII dies e grege eiceretur ad mores observandos." },
+            { date: "Die XXIII Decembris, MMXXIII", text: "Propter rem machinae reparandae, sine consensu artificis (ducis societatis Yongan), <span class='highlight'>fere hora nona et dimidia noctis ad ianuam artificis venit ut eum vexaret</span>. Eo tempore pater artificis morbo cordis laborabat et quiete indigebat, artifex ipse quoque medicamentis somni utebatur. Hoc factum vitam eorum graviter turbavit." },
+            { date: "Die XXVI Decembris, MMXXIII", text: "Inventus est <span class='highlight'>homines palam reprehendere</span> in grege suo, consiliis et pretiis artificis displicens, et <span class='highlight'>verum nomen artificis in imaginibus WeChat prodidit</span>. Hora octava noctis ad certamen praesens vocatus est, et poena palam lecta est. <span class='highlight'>Ab omnibus societatibus Foederis Yongan exclusus est</span>. Postea facultas ultima ei data est ut epistulam paenitentiae CCC verborum scriberet." },
+            { date: "Die XXIX Decembris, MMXXIII", text: "Usque ad mediam noctem diei XXIX, <span class='highlight'>nullam epistulam paenitentiae misit</span>, qua facultatem ultimam amisit. Nunc rem publicam facere decrevimus ut omnes lusores regionis moneantur." },
+            { date: "Die VI Iunii, MMXXV", text: "In pagina Bilibili M4TECH_official, sub propatulo ludi 'Tokyo Xtreme Racer', commentarium ineptum scripsit fictos characteres iungens. <span class='highlight'>Probatus est simulator ludi qui sine scientia loquitur</span>. Postea se veterem simulat et lusores veros vituperat, qua re famam pessimam in illo circulo consecutus est.", img: "img_3.jpg", imgDesc: "Quomodo hos characteres inter se nihil habentes coniungere potuisti?" },
+            { date: "Die XXVII Iulii, MMXXV", text: "Quoniam a persona quadam (coser) in conventu e numero amicorum remotus est, iratus <span class='highlight'>in gregem amicorum eius irrupit et cur remotus esset furiose quaesivit</span>. Quamquam illa persona ei placide rem explicavit, verbis acrioribus et assidua vexatione usus est. Propter hoc malum exemplum omnes monendi sunt ut eum vitent.", subTitle: "Monitio ab illa persona edita", img: "img_2.jpg", imgDesc: "Videtur eum homines et in foro et in vita vera undique vexavisse." },
+            { date: "Die XXI Maii, MMXXVI", text: "Cum in spatio suo personali alios vituperaret, <span class='highlight'>verum nomen condiscipuli sui prodidit</span>. Ut supra dictum est, Zhang Liu Xiao Yang non semel secreta aliorum foras effudit." }
+        ]
+    },
+    ja: {
+        langTag: "ja",
+        label: "公式通達",
+        mainTitle: "恶劣行为に関する通達および事案の公示",
+        partyInfo: "当事者：張劉暁楊（鼠壬/Varcolac/凯文/M4TECH_offical/雷明顿ACR_Official/AK117_Official/Anonymous Chihaya/小心你*/崩坏の少年）",
+        noticeTitle: "鼠壬に対する処分決定に関する通達",
+        noticeTo: "永安連盟、第三中軍事愛好会、第一中軍事愛好会、水利電力学院ナイロン同好会の会員各位：",
+        noticeP1: "当会会員である鼠壬は、在籍中に再三にわたり会則に違反し、<span class='highlight'>会員の個人情報および機密を外部に漏洩</span>させました。幹事による厳重注意和教育の後も改悛の情が見られなかったため、総支部での協議の結果、7日間の暫定的な除名処分といたしました。",
+        noticeP2: "しかしながら、処分期間中も本人は自らの過ちを省みず、あろうことか<span class='highlight'>深夜に永安連盟の会員に対して付きまとい・嫌がらせ行為</span>を行いました。さらに、修理費用の価格への不満から、自身のグループチャット内で相手を晒し上げて誹谤中傷し、当会の名誉を著しく失墜させ、極めて悪質な影響を及ぼしました。",
+        noticeP3: "よって、同好会団委員会による審議の結果、<span class='highlight'>鼠壬を同好会から永久追放（除名処分）とし、今後の再入会は一切認めない</span>ことを決定いたしました。",
+        noticeFooter: "水利電力学院ナイロン同好会<br>2023年12月28日",
+        sectionHero: "「英雄的」な事績",
+        sectionWhereAmI: "私は誰？ここはどこ？",
+        img1Desc: "心配ご無用、私たちがあなたの記憶を呼び戻してあげました。",
+        sectionAudio: "オフライン対峙の音声記録アーカイブ",
+        audioTitle: "【証拠保全：2023年12月26日 オフライン対峙現場の録音】",
+        audioLink: "再生できない場合は、こちらのクラウド（Quark）から音声をダウンロードしてください：https://pan.quark.cn/s/3220c0802a87",
+        timeline: [
+            { date: "2018年07月22日", text: "Bilibiliのメインアカウント（張劉暁楊）のタイムラインにて、自身の不義理な行動により実の親を晒し上げる暴挙に出る。", img: "img_5.jpg", imgDesc: "今に至るまで両親に対して後ろめたい気持ちがあるはずだ、全く責任感がない！" },
+            { date: "2021年04月22日", text: "Steam版『Torque Drift』にて、<span class='highlight'>端末のシステム時間を変更してデイリー報酬を不正取得・冷却時間を加速</span>させたことによりアカウントをBANされる。これに逆恨みし、ゲームのレビュー欄に自身のBANコードを投稿して執拗に低評価レビューを連投した。", img: "img_4.png", imgDesc: "この手のゲームでまでチートを使うのか？" },
+            { date: "2022年01月08日", text: "『エースコンバット7』の公開マルチプレイ部屋にて<span class='highlight'>体力固定（無敵）チートを使用</span>。百度（Baidu）のタイバに晒される。動画の決定的な証拠はなかったものの、ID名が「崩壊の少年」であり、状況から張劉暁楊の行為であると完全に断定された。" },
+            { date: "2022年05月29日", text: "『エースコンバット7』の公开マルチプレイ部屋にて、<span class='highlight'>一撃必殺および最高速PSM（ポストストールマニューバ）の不正チートを使用</span>。外国人プレイヤーによって録画・保存される。不正行為が確定した証拠映像：https://www.youtube.com/watch?v=2Msaf3Jvnps" },
+            { date: "2023年11月20日", text: "自身が作成したグループチャット内において、許可なく<span class='highlight'>内部グループのメッセージを无差别転送（计131件）</span>。グループ会員2名から1回目の警告を受け、本人は改めると表明し、同様の行為は行わないと約束した。" },
+            { date: "2023年12月22日", text: "再び個人のグループチャットにおいて、<span class='highlight'>内部チャットのスクリーンショットを无差别に見せびらかし</span>、専攻、クラス、氏名などの实名を含む个人情報を漏洩させた。事態はより深刻化。当夜、激しい非難を受けた後、再び口頭で反省を表明。内部処分として、今後の様子を見るため7日間のグループ追放処分とした。" },
+            { date: "2023年12月23日", text: "ブラスターの修理案件を巡り、技術者（永安Wargame連盟隊長）の同意を得ないまま、<span class='highlight'>当夜の21時30分過ぎに技術者の自宅前まで直接押しかけ、付きまとい行為</span>に及んだ。当時、技術者の父親は心筋梗塞で静養が必要な状態であり、技術者本人も睡眠障害で漢方薬を服用中であったため、この行為は技術者とその家族の生活を著しく脅かした。" },
+            { date: "2023年12月26日", text: "个人グループ内で<span class='highlight'>特定の人物を晒し上げ</span>、技術者の改修提案や修理費用に不満をぶちまけ、WeChatのスクリーンショット内で<span class='highlight'>技術者の実名を漏洩</span>させていることが発覚。当夜20時過ぎにオフラインの対峙の場に呼び出され、一同の前で処分結果を通達。<span class='highlight'>永安Wargame連盟の全同好会からブラックリスト登録</span>された。事后、最後の機会として300文字の誠実な反省文の提出を求めた。" },
+            { date: "2023年12月29日", text: "29日深夜24時の期限までに、<span class='highlight'>いかなるルートからも反省文は提出されず</span>、最後のチャンスを自ら不意にした。事態を重く受け止め、本件を公開し、居住地域のWargameプレイヤーに周知して注意を喚起することを決定した。" },
+            { date: "2025年06月06日", text: "Bilibiliアカウント（M4TECH_official）にて、『首都高バトル』のプロモーションビデオのコメント欄に「赤の悪魔がノーススターを追いかける展開へ」と書き込み、<span class='highlight'>にわかプレイヤーによる見当違いなカップリング（CP）妄想</span>であるとコミュニティ内で特定される。騒動後、古参を装って首都高バトル界隈のプレイヤーを各所で誹謗中傷したため、同界隈でもその悪名が広く知れ渡ることとなった。", img: "img_3.jpg", imgDesc: "何の関係もないキャラクター同士をどうやって結びつけたんだ？" },
+            { date: "2025年07月27日", text: "イベントのコスプレイヤーから一方的にフレンド解除されたことに逆上し、<span class='highlight'>そのコスプレイヤーの友人グループに乱入してなぜ解除したのかを激しい口調で問い詰めた</span>。コスプレイヤー侧は理路整然と理由を説明したものの、張劉暁楊の口調が極めて威圧的であり、その後も執拗につきまとった。極めて悪質な行動であるため、周囲に注意を促目的のものである。", subTitle: "当該コスプレイヤーによる警告投稿", img: "img_2.jpg", imgDesc: "オンラインでもオフラインでも、至る所でトラブルを起こしているようだ。" },
+            { date: "2026年05月21日", text: "個人のSNSスペースに他人の晒し上げ投稿を行った際、<span class='highlight'>同じ学校の同級生の実名を漏洩</span>させていることが発觉。上述の通り、張劉暁楊による他人のプライバシー情報の漏洩行為は、今回が初めてではない。" }
+        ]
+    },
+    de: {
+        langTag: "de",
+        label: "Offizielle Mitteilung",
+        mainTitle: "Bekanntmachung über böswilliges Verhalten und öffentliche Offenlegung",
+        partyInfo: "Betroffene Person: 张刘晓杨 (Pseudonyme: 鼠壬/Varcolac/凯文/M4TECH_offical/雷明顿ACR_Official/AK117_Official/Anonymous Chihaya/小心你*/崩坏の少年)",
+        noticeTitle: "Bekanntmachung über die Disziplinarmaßnahme gegen Shuren",
+        noticeTo: "An alle Mitglieder von 永安联盟, 三中军友社, 一中军友社 und 水院尼龙社:",
+        noticeP1: "Da unser Mitglied Shuren während seiner Vereinszugehörigkeit wiederholt gegen die internen Vereinsregeln verstoßen und <span class='highlight'>persönliche Daten sowie Informationen von Mitgliedern an die Öffentlichkeit weitergegeben</span> hat, zeigte er auch nach Ermahnung und Belehrung durch die Vereinsleitung keine Einsicht. Nach Absprache der Generalabteilung des Vereins wurde ein siebentägiger vorläufiger Ausschluss beschlossen.",
+        noticeP2: "Während der Zeit des Ausschlusses war sich Shuren seines Fehlers uneinsichtig und ging sogar so weit, <span class='highlight'>Mitglieder von 永安联盟 mitten in der Nacht zu belästigen</span>. Aus Unzufriedenheit über die Reparaturgebühren stellte er diese zudem in seiner eigenen Chatgruppe bloß, was dem Image unseres Vereins schweren Schaden zufügte und extrem negative Auswirkungen hatte.",
+        noticeP3: "Auf Beschluss des Jugendliga-Ausschusses des Vereins wird <span class='highlight'>Shuren hiermit dauerhaft aus dem Verein ausgeschlossen und nie wieder aufgenommen</span>.",
+        noticeFooter: "水利电力学院尼龙社<br>28. Dezember 2023",
+        sectionHero: "„Heldentaten“",
+        sectionWhereAmI: "Wer bin ich und wo bin ich?",
+        img1Desc: "Keine Sorge, wir haben deiner Erinnerung auf die Sprünge geholfen.",
+        sectionAudio: "Audioarchiv der Offline-Konfrontation",
+        audioTitle: "【Beweissicherung: Audioaufnahme der Offline-Konfrontation vom 26. Dezember 2023】",
+        audioLink: "Falls die Audiodatei nicht abgespielt werden kann, lade sie bitte über die Quark-Cloud herunter: https://pan.quark.cn/s/3220c0802a87",
+        timeline: [
+            { date: "22. Juli 2018", text: "Sein Haupt-Bilibili-Account — 张刘晓杨 — stellte seine eigenen leiblichen Eltern in seinen Beiträgen (Dynamics) öffentlich bloß.", img: "img_5.jpg", imgDesc: "Bis heute schämst du dich nicht einmal vor deinen Eltern, du hast absolut kein Verantwortungsbewusstsein!" },
+            { date: "22. April 2021", text: "Im Steam-Spiel „Torque Drift“ wurde er gebannt, weil er <span class='highlight'>die Systemzeit seines Geräts manipuliert hatte, um tägliche Belohnungen zu erschleichen und Abkühlzeiten zu verkürzen</span>. Aus Wut darüber verfasste er im Review-Bereich des Spiels extrem negative Bewertungen und postete dort seinen eigenen Bann-Code.", img: "img_4.png", imgDesc: "Musst du selbst in so einem Spiel cheaten?" },
+            { date: "08. Januar 2022", text: "In einer öffentlichen Multiplayer-Lobby von „Ace Combat 7“ nutzte er einen <span class='highlight'>God-Mode-Cheat (HP-Lock)</span>. Er wurde im Tieba-Forum bloßgestellt. Obwohl es keine Videobeweise gab, bestätigt der Benutzername „崩坏の少年“ zweifellos, dass die Tat von 张刘晓杨 begangen wurde." },
+            { date: "29. Mai 2022", text: "In einer öffentlichen Multiplayer-Lobby von „Ace Combat 7“ nutzte er Cheats für <span class='highlight'>Sofortiges Töten (Instakill) und PSM (Post-Stall-Manöver) bei voller Geschwindigkeit</span>. Dies wurde von einem ausländischen Spieler aufgezeichnet und archiviert. Das Beweisvideo seiner Überführung beim Cheaten: https://www.youtube.com/watch?v=2Msaf3Jvnps" },
+            { date: "20. November 2023", text: "In einer von ihm selbst erstellten Chatgruppe leitete er ohne Erlaubnis <span class='highlight'>wahllos interne Gruppennachrichten (insgesamt 131 Nachrichten)</span> weiter. Zwei Gruppenmitglieder sprachen eine erste Warnung an ihn aus, woraufhin er Besserung gelobte und versprach, solches Verhalten einzustellen." },
+            { date: "22. Dezember 2023", text: "Er fertigte erneut in seiner privaten Chatgruppe <span class='highlight'>wahllos Screenshots von internen Gruppenchats</span> an. Dabei leakte er echte persönliche Daten wie Studiengänge, Klassen und Klarnamen, was die Schwere der Tat nochmals verschärfte. Nach heftiger Kritik am selben Abend versprach er erneut mündlich Besserung. Intern wurde beschlossen, ihn für 7 Tage aus der Gruppe zu werfen, um sein zukünftiges Verhalten zu beobachten." },
+            { date: "23. Dezember 2023", text: "Bezüglich einer Launcher-Reparatur suchte er ohne Zustimmung des Technikers (dem Leiter der 永安wargame联盟) gegen <span class='highlight'>21:30 Uhr abends direkt dessen Haustür auf, um ihn zu belästigen</span>. Zu diesem Zeitpunkt benötigte der Vater des Technikers wegen eines Myokardinfarkts absolute Ruhe, und der Techniker selbst litt unter Schlafstörungen und nahm pflanzliche Medizin. Diese Aktion stellte eine erhebliche Störung des Lebens des Technikers und seiner Familie dar." },
+            { date: "26. Dezember 2023", text: "Es wurde entdeckt, dass er in seiner persönlichen Gruppe <span class='highlight'>Leute anprangerte und denunzierte</span>, wobei er seine Unzufriedenheit über die Änderungsvorschläge und Reparaturpreise des Technikers äußerte und <span class='highlight'>den Klarnamen des Technikers</span> in WeChat-Screenshots leakte. Gegen 20:00 Uhr abends wurde er zu einer Offline-Konfrontation herausbestellt, wo ihm das Urteil öffentlich vorgelesen wurde. <span class='highlight'>Er wurde von allen Vereinen der 永安wargame联盟 auf die schwarze Liste gesetzt</span>. Danach wurde ihm eine allerletzte Chance gegeben, eine aufrichtige Entschuldigung mit mindestens 300 Wörtern zu verfassen." },
+            { date: "29. Dezember 2023", text: "Bis zum 29. Dezember um 24:00 Uhr Mitternacht hatte er <span class='highlight'>über keinen Kanal eine Entschuldigung eingereicht</span> und damit seine letzte Chance auf Korrektur verspielt. Es wurde nun beschlossen, diese Angelegenheit öffentlich zu machen, um die lokalen Wargame-Spieler an seinem Wohnort zu informieren und alle vor dieser Person zu warnen." },
+            { date: "06. Juni 2025", text: "Sein Bilibili-Account M4TECH_official kommentierte unter dem Promotion-Video zu „Tokyo Xtreme Racer“ (首都高赛车): „Vorspulen zum Roten Teufel, der Polaris verfolgt“. <span class='highlight'>Er wurde als Fake-Spieler entlarvt, der unbegründete Ships (CP) erzwang</span>. Nach dem Vorfall gab er sich als Veteran aus und beleidigte überall Spieler der 首都高赛车-Szene, wodurch er sich auch in diesem Fandom einen berüchtigten Ruf erwarb.", img: "img_3.jpg", imgDesc: "Wie um alles in der Welt hast du zwei Charaktere zusammengeshifft, die absolut nichts miteinander zu tun haben?" },
+            { date: "27. Juli 2025", text: "Verärgert darüber, dass er von einem Convention-Cosplayer einseitig aus der Freundesliste entfernt wurde, geriet er in Wut und <span class='highlight'>drang in die Chatgruppe der Freunde dieses Cosplayers ein, um diesen aggressiv zur Rede zu stellen</span>. Obwohl der Cosplayer ihm die Gründe höflich erklärte, war der Ton von 张刘晓杨 extrem konfrontativ und er verfolgte den Cosplayer unnachgiebig weiter. Aufgrund dieses böswilligen Verhaltens wird diese Warnung herausgegeben, um alle zur Vorsicht aufzurufen.", subTitle: "Vom COSER veröffentlichter Warnbeitrag", img: "img_2.jpg", imgDesc: "Es scheint, als hätte er sich sowohl offline als auch online mit jedem angelegt." },
+            { date: "21. Mai 2026", text: "Es wurde festgestellt, dass er beim Posten eines Beitrags in seinem persönlichen Feed <span class='highlight'>den Klarnamen eines Mitschülers/Kommilitonen leakte</span>. Wie oben bereits erwähnt, ist dies keineswegs das erste Mal, dass 张刘晓杨 die Privatsphäre anderer verletzt und sensible Daten weitergegeben hat." }
+        ]
+    }
+};
+
+// 语言切换核心逻辑
+function switchLang(lang) {
+    const data = i18n[lang];
+    if (!data) return;
+
+    // 1. 修改 HTML 的 lang 属性
+    document.getElementById('html-tag').setAttribute('lang', data.langTag);
+
+    // 2. 更新基础文本
+    document.getElementById('main-title').innerText = data.mainTitle;
+    document.getElementById('party-info').innerText = data.partyInfo;
+    
+    // 官方通报板块
+    const noticeBox = document.getElementById('notice-box');
+    noticeBox.setAttribute('data-label', data.label); // 更新伪元素文字
+    document.getElementById('notice-title').innerText = data.noticeTitle;
+    document.getElementById('notice-to').innerText = data.noticeTo;
+    document.getElementById('notice-p1').innerHTML = data.noticeP1;
+    document.getElementById('notice-p2').innerHTML = data.noticeP2;
+    document.getElementById('notice-p3').innerHTML = data.noticeP3;
+    document.getElementById('notice-footer').innerHTML = data.noticeFooter;
+
+    // 标题更新
+    document.getElementById('section-hero').innerText = data.sectionHero;
+    document.getElementById('section-whereami').innerText = data.sectionWhereAmI;
+    document.getElementById('img1-desc').innerText = data.img1Desc;
+    document.getElementById('section-audio').innerText = data.sectionAudio;
+    document.getElementById('audio-title').innerText = data.audioTitle;
+    document.getElementById('audio-link').innerText = data.audioLink;
+
+    // 3. 动态渲染时间轴
+    const timelineList = document.getElementById('timeline-list');
+    timelineList.innerHTML = ''; // 清空原有内容
+
+    data.timeline.forEach(item => {
+        const li = document.createElement('li');
+        
+        // 日期
+        const spanDate = document.createElement('span');
+        spanDate.className = 'date';
+        spanDate.innerText = item.date;
+        li.appendChild(spanDate);
+
+        // 正文
+        const pText = document.createElement('p');
+        pText.innerHTML = item.text;
+        li.appendChild(pText);
+
+        // 如果存在特殊的子标题（如coser贴）
+        if (item.subTitle) {
+            const h2Sub = document.createElement('h2');
+            h2Sub.innerText = item.subTitle;
+            li.appendChild(h2Sub);
+        }
+
+        // 如果包含证据图片板块
+        if (item.img) {
+            const imgSec = document.createElement('div');
+            imgSec.className = 'image-section';
+            
+            const img = document.createElement('img');
+            img.src = item.img;
+            img.alt = "Evidence";
+            img.className = "evidence-img";
+            
+            const pDesc = document.createElement('p');
+            pDesc.style = "font-size: 12px; color: #888; margin-top: 10px;";
+            pDesc.innerText = item.imgDesc;
+            
+            imgSec.appendChild(img);
+            imgSec.appendChild(pDesc);
+            li.appendChild(imgSec);
+        }
+
+        timelineList.appendChild(li);
+    });
+
+    // 4. 更新按钮高亮样式
+    const buttons = document.querySelectorAll('.lang-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // 根据传入的语言点亮对应的按钮
+    const btnIndex = { 'zh': 0, 'en': 1, 'la': 2, 'ja': 3, 'de': 4 };
+    buttons[btnIndex[lang]].classList.add('active');
+}
+
+// 页面加载时默认初始化中文
+window.onload = function() {
+    switchLang('zh');
+};
+</script>
 
 </body>
 </html>
